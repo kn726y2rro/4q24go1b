@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - Authors{% endblock %}
+
+{% block content %}
+
+<section class="section-primary">
+      <div class="container container-small">
+    <h1 class="align-center">Authors on {{ SITENAME }}...</h1>
+</div>
+</section>
+
+<section class="section-tertiary">
+      <div class="container container-small">
+
+    <ul>
+    {% for author, articles in authors|sort %}
+        <li><a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a> ({{ articles|count }})</li>
+    {% endfor %}
+    </ul>
+
+</div>
+</section>
+
+{% endblock %}

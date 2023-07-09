@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - Categories{% endblock %}
+
+{% block content %}
+
+<section class="section-primary">
+      <div class="container container-small">
+    <h1 class="align-center">Categories on {{ SITENAME }}...</h1>
+</div>
+</section>
+
+<section class="section-tertiary">
+      <div class="container container-small">
+
+    <ul>
+    {% for category, articles in categories|sort %}
+        <li><a href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a> ({{ articles|count }})</li>
+    {% endfor %}
+    </ul>
+
+</div>
+</section>
+
+{% endblock %}

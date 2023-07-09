@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+ <section class="section-primary">
+    <div class="container container-small">
+        {% block content_title %}
+        <h1 class="align-center">Reviews of Best Selling Products in 2023</h1>
+        {% endblock %}
+    </div>
+</section>
+
+
+<section class="section-secondary">         
+        <div class="row">
+
+        {% for article in articles_page.object_list %}
+        <div class="col col-md-3">
+        <div class="card">
+            <a href="{{ SITEURL }}/{{ article.url }}">
+                
+                    {% if article.image %}
+                    <div class="square">
+                
+                        <img src="{{ article.image }}">  
+                        </div>
+                    {% endif %}
+
+                <h2 class="card-title">{{article.title }}</h2>
+                               
+              
+              <ul class="card-actions">
+                  <li><button class="button-primary">Read more...</button></li>
+                </ul>
+              
+            </a>
+        </div>
+    </div>
+        {% endfor %}
+    </div>
+</section>       
+
+   
+
+<section class="section-secondary">    
+        {% if articles_page.has_other_pages() %}
+            {% include 'pagination.html' %}
+        {% endif %}
+    
+</section>
+{% endblock content %}

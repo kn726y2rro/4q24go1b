@@ -1,0 +1,399 @@
+{% extends "base.html" %}
+{% block html_lang %}{{ article.lang }}{% endblock %}
+
+{% block title %}{{ SITENAME }} - {{ article.title|striptags }}{%endblock%}
+
+{% block head %}
+  {{ super() }}
+
+  {% if article.metadescription %}
+  <meta type="description" content="{{ article.metadescription }}" />
+  {% endif %}
+
+  {% if article.cool_opengraph %}
+
+  {% if article.cool_opengraph.title %}
+  <meta property="og:title" content="{{ article.cool_opengraph.title }}" />
+  {% endif %}
+  {% if article.cool_opengraph.description %}
+  <meta property="og:description" content="{{ article.cool_opengraph.description }}" />
+  {% endif %}
+  <meta property="og:type" content="article" />
+  {% if article.cool_opengraph.image %}
+  <meta property="og:image" content="{{ article.cool_opengraph.image }}" />
+  <meta property="og:image:width" content="500" />
+  <meta property="og:image:height" content="500" />
+  {% endif %}
+  {% endif %}
+  <meta property="og:url" content="{{ SITEURL }}/{{ article.url }}" />
+  <meta property="og:site_name" content="{{ SITENAME }}" />
+
+  {% if article.cool_twitter %}
+  <meta property="twitter:card" content="summary_large_image" />
+  {% if article.cool_twitter.image %}
+  <meta property="twitter:image" content="{{ article.cool_twitter.image }}" />
+  {% endif %}
+  {% if article.cool_twitter.image %}
+  <meta property="twitter:site" content="{{ article.cool_twitter.handle }}" />
+  {% endif %}
+  {% endif %}
+
+  {% if article.cool_richsnippet %}
+      <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": {{ SITEURL }}/{{ article.url }}
+      },
+      "headline": {{ article.cool_richsnippet.headline }},
+      "image": {{ article.cool_richsnippet.image }},
+      "datePublished": {{ article.date }},
+      "dateModified": {{ article.modified }},
+      "author": {
+        "@type": "Person",
+        "name": {{ article.cool_richsnippet.authorname }}
+      },
+       "publisher": {
+        "@type": "Organization",
+        "name": {{ article.cool_richsnippet.publishername }},
+        "logo": {
+          "@type": "ImageObject",
+          "url": {{ article.cool_richsnippet.logoimage }}
+        }
+      }
+    }
+    </script>
+ {% endif %}
+
+    
+{% endblock %}
+
+{% block content %}
+
+
+    <section class="section-primary">
+      <div class="container">
+
+        {% if article.category %}
+
+        <ul class="breadcrumbs">
+  <li><a href="{{ SITEURL }}/">Home</a></li>
+{% for cat in article.category.ancestors or [article.category] %}
+    <li><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat.shortname or cat }}</a></li>
+{% endfor %}
+</ul>
+
+        {% endif %}
+
+
+        {% if article.modified %}
+          <p class="align-center">
+            Last updated: {{ article.locale_modified }}
+          </p>
+          <br>
+        {% endif %}
+
+
+        {% if article.title %}
+        <h1 class="h1 align-center">{{ article.title }}</h1>
+        {% endif %}
+
+        {% if article.subtitle %}
+        <div class="align-center"><em>{{ article.subtitle }}</em></div><br>
+        {% endif %}
+
+        <br>
+
+        <ul class="tags center">
+        {% for tag in article.tags|sort %}
+          <a href="{{ SITEURL }}/{{ tag.url }}">
+            <li class="tag" style="margin-bottom: 15px;">{{ tag }}</li>
+          </a>
+        {% endfor %}
+        </ul>
+    </div>
+  </section>
+
+
+
+<section class="section-secondary">
+  <div class="container container-small">
+  <h2 class="">Top 3 Best-Selling Products You Need to Know About Now:</h2>
+  <div class="row">
+    <div class="col col-md-4">
+      <div class="card">
+        <h3 class="card-title">Most Popular</h3>
+        <div class="center square">
+        <img src="{{article.cool_products[0].image_m}}">
+        </div>
+        <br>
+        <div class="card-contents">
+          <strong>{{article.cool_products[0].brand}}:</strong>
+          <p>{{article.cool_products[0].title}}</p>
+        </div>
+          <ul class="card-actions">
+            <li>
+              <a href="{{ article.cool_products[0].clickurl }}" class="center">
+              <button class="button-warning">
+                {% if article.cta %}
+                      {{ article.cta }}
+                  {% else %}
+                      Check Latest Price
+                  {% endif %}
+            </button></a></li>
+          </ul>
+          
+      </div>
+    </div>
+    <div class="col col-md-4">
+      <div class="card">
+        <h3 class="card-title">2nd Choice</h3>
+        <div class="center square">
+        <img src="{{article.cool_products[1].image_m}}">
+        </div>
+        <br>
+        <div class="card-contents">
+        <strong>{{article.cool_products[1].brand}}:</strong>
+        <p>{{article.cool_products[1].title}}</p>
+        </div>
+        <ul class="card-actions">
+          <li>
+              <a href="{{ article.cool_products[1].clickurl }}" class="center">
+            <button class="button-warning">
+              {% if article.cta %}
+                    {{ article.cta }}
+                {% else %}
+                    Check Latest Price
+                {% endif %}
+          </button></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col col-md-4">
+      <div class="card">
+        <h3 class="card-title">3rd Choice</h3>
+        <div class="center square">
+        <img src="{{article.cool_products[2].image_m}}">
+        </div>
+        <br>
+        <div class="card-contents">
+        <strong>{{article.cool_products[2].brand}}:</strong>
+        <p>{{article.cool_products[2].title}}</p>
+      </div>
+        <ul class="card-actions">
+          <li>
+              <a href="{{ article.cool_products[2].clickurl }}" class="center">
+            <button class="button-warning">
+              {% if article.cta %}
+                    {{ article.cta }}
+                {% else %}
+                    Check Latest Price
+                {% endif %}
+          </button></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+
+
+    <section class="section-tertiary">
+      <div class="container container-small">
+          {% if article.cool_description %}
+        <p>{{ article.cool_description | replace('\n', '</p><br><p>') }}</p>
+        {% endif %}
+ 
+<p class="alert alert-warning align-center">
+  <em>
+We are a participant in the ClickBank and Amazon Services LLC Associates programs. These are affiliate advertising programs designed to provide a means for sites to earn advertising fees by advertising and linking to offers on ClickBank and Amazon.com, respectively.
+</em>
+</p>
+
+</div>
+</section>
+
+
+  
+
+    <section class="section-primary">
+      <div class="container container-small">
+
+        <h2>Discover the 10 Best-Selling Products That Everyone is Talking About:</h2>
+
+        </div>
+          <div class="container">
+                      {% for product in article.cool_products %}
+    <div class="card">
+      <div class="row">
+          <div class="col col-lg-1">
+            
+              <div class="center">
+              <div class="circle">{{ loop.index }}</div>
+                <br><br><br>
+            
+            </div>
+          </div>
+
+          <div class="col col-lg-3">
+              {% if product.image_m %}
+              <div class="center">
+              <a href="{{ product.clickurl }}">
+              <img src="{{ product.image_m }}">
+              </a>
+              </div>
+              {% endif %}
+          </div>  
+
+          <div class="col col-lg-5">
+                <div class="center">
+              <a href="{{ product.clickurl }}">
+              {% if product.title %}
+                <p class="card-title align-center" style="">{{ product.title }}</p>
+              {% endif %}
+
+              </a>
+              </div>
+          </div>
+
+          <div class="col col-lg-3">
+            <div class="align-center vertical-center">
+              <a href="{{ product.clickurl }}">
+              <button class="button-warning button-shadow">
+                {% if article.cta %}
+                    {{ article.cta }}
+                {% else %}
+                    Check Latest Price
+                {% endif %}
+              </button>
+              </a>
+            </div>
+          </div>
+           
+     </div>   
+  </div>
+    {% endfor %}
+
+    </div>
+
+  </section>
+
+  
+{% if article.similar_posts %}
+<section class="section-secondary">
+  <div class="container container-small">
+  <h2 class="">Related Best-Selling Products:</h2>
+  </div>
+<div class="container">
+  <div class="row">
+
+{% for similar in article.similar_posts %}
+    <div class="col col-md-3">
+      <div class="card">
+        <h3 class="card-title"></h3>
+        <div class="square center">
+        <img src="{{similar.image}}">
+        </div>
+        <br>
+        <div class="card-contents">
+        <p><strong>{{ similar.title }}</strong></p>
+        </div>
+        <ul class="card-actions">
+          <li>
+            <a href="{{ SITEURL }}/{{ similar.url }}" class="center">
+            <button class="button-warning">
+              {% if article.cta %}
+                    {{ article.cta }}
+                {% else %}
+                    Check Products
+                {% endif %}
+          </button></a></li>
+        </ul>
+      </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+</section>
+{% endif %}
+
+
+<section class="section-tertiary">
+  <div class="container container-small">
+
+
+      <h2>Explore the 10 Best-Selling Products: Why They're Worth It...</h2>
+
+
+    {% for review in article.cool_reviews %}
+
+
+    <div class="panel">
+    <div class="panel-head">
+        <p class="panel-title">{{ loop.index }}. Review</p>
+    </div>
+    <div class="panel-body">
+      <a href="{{ review.clickurl }}" class="center">
+        <img src="{{review.image_l}}">
+      </a>
+      <br>
+      <a href="{{ review.clickurl }}">
+      <h3 >{{review.title}}</h3>
+    </a>
+    <br>
+        {{review.text}}
+    </div>
+    <div class="panel-footer">
+      <a href="{{ review.clickurl }}" class="center">
+      <button class="button-warning button-shadow">
+        {% if article.cta %}
+            {{ article.cta }}
+        {% else %}
+            Check Latest Price
+        {% endif %}
+      </button>
+      </a>
+       
+    </div>
+</div>
+
+
+      
+
+
+      
+
+      
+
+
+      
+    {% endfor %}
+
+    {{article.content}}
+  </div>
+</section>
+
+
+<section>
+  <div class="container">
+    <br>
+    <hr>
+    {% if article.modified %}
+      <br>
+      <p>
+        Last updated: {{ article.locale_modified }}
+      </p>
+    {% endif %}
+    
+    {% if article.author %}
+      <p>
+        Written by: {{ article.author }}
+      </p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
