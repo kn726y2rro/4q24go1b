@@ -7,7 +7,7 @@ SITEURL = '' #'http://127.0.0.1'
 
 PATH = 'content'
 
-THEME = 'D:/JFJ/Projects/pelican/theme/mulberry'
+THEME = 'theme/mulberry'
 
 TIMEZONE = 'Europe/Paris'
 
