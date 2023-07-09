@@ -24,7 +24,7 @@ THEME = 'theme/mulberry'
 
 DEFAULT_LANG = 'English'
 
-#GOOGLE_ANALYTICS = ""
+GOOGLE_ANALYTICS = "G-S5LW93DGNV"
 
 LOAD_CONTENT_CACHE = False
 
