@@ -1,4 +1,52 @@
 {% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - {{ SITETITLE }}{%endblock%}
+
+
+{% block head %}
+  {{ super() }}
+
+  <link rel="canonical" href="{{ SITEURL }}">
+  <meta type="description" content="{{ SITEDESCRIPTION }}" />
+
+  <meta property="og:title" content="{{ SITETITLE }}" />
+  <meta property="og:description" content="{{ SITEDESCRIPTION }}" />
+
+  <meta property="og:type" content="article" />
+
+  <meta property="og:url" content="{{ SITEURL }}" />
+  <meta property="og:site_name" content="{{ SITENAME }}" />
+
+
+ 
+      <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://yeroda.com"
+      },
+      "headline": {{ SITETITLE }},
+      "datePublished": "2023-06-26 00:00",
+      "dateModified": {{ BUILD_TIME | strftime("%b %d, %Y, %H:%M:%S") }},
+      "author": {
+        "@type": "Person",
+        "name": "Yeroda"
+      },
+       "publisher": {
+        "@type": "Organization",
+        "name": "Yeroda"
+        
+      }
+    }
+    </script>
+
+
+    
+{% endblock %}
+
+
 {% block content %}
 
  <section class="section-primary">

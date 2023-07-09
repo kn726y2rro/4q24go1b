@@ -1,15 +1,23 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 
-AUTHOR = 'tes'
-SITENAME = 'yeroda'
-SITEURL = '' #'http://127.0.0.1'
+from datetime import datetime
+import pytz
+
+AUTHOR = 'Yeroda'
+SITENAME = 'YERODA'
+SITEURL = 'https://yeroda.com' #'http://127.0.0.1'
+
+SITETITLE = "Reviews of Best Selling Products in 2023"
+SITEDESCRIPTION = "Discover 2023's best-selling products with our concise, insightful reviews. Make informed purchases with our expert analysis and ratings. Your shortcut to the best of 2023 starts here!"
+
+TIMEZONE = 'Europe/Paris'
+BUILD_TIME = datetime.now(pytz.timezone(TIMEZONE))
 
 PATH = 'content'
 
 THEME = 'theme/mulberry'
 
-TIMEZONE = 'Europe/Paris'
 
 DEFAULT_LANG = 'English'
 
@@ -18,8 +26,8 @@ DEFAULT_LANG = 'English'
 LOAD_CONTENT_CACHE = False
 
 # Feed generation is usually not desired when developing
-FEED_ALL_ATOM = None #'feeds/all.atom.xml'
-CATEGORY_FEED_ATOM = None #'feeds/{slug}.atom.xml'
+FEED_ALL_ATOM = 'feeds/all.atom.xml'
+CATEGORY_FEED_ATOM = 'feeds/{slug}.atom.xml'
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
