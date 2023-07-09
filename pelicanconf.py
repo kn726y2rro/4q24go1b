@@ -50,7 +50,8 @@ SITEMAP = {
 }
 
 PLUGIN_PATHS = ["plugins"]
-PLUGINS = ['sitemap','rad', 'yaml_metadata','more_categories', 'similar_posts']#, 'seo']
+# PLUGINS = ['sitemap','rad', 'yaml_metadata','more_categories', 'similar_posts']#, 'seo']
+PLUGINS = ['sitemap','rad','more_categories', 'similar_posts']#, 'seo']
 
 SIMILAR_POSTS_MAX_COUNT = 4
 
