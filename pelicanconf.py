@@ -54,6 +54,12 @@ TAG_URL = 'tag/{slug}.html'
 TAG_SAVE_AS = 'tag/{slug}.html'
 
 
+STATIC_PATHS = ['extra/robots.txt']
+
+EXTRA_PATH_METADATA = {
+    'extra/robots.txt': {'path': 'robots.txt'}
+}
+
 
 SITEMAP = {
 	"format": "xml",
