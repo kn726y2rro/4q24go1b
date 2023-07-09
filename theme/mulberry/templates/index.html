@@ -10,6 +10,7 @@
   <meta name="description" content="{{ SITEDESCRIPTION }}" />
   <meta name="keywords" content="{{ SITEKEYWORDS }}">
   <meta name="author" content="{{ AUTHOR }}">
+  <meta name="publisher" content="{{ AUTHOR }}">
 
   <meta property="og:title" content="{{ SITETITLE }}" />
   <meta property="og:description" content="{{ SITEDESCRIPTION }}" />
@@ -34,11 +35,11 @@
       "dateModified": {{ BUILD_TIME | strftime("%b %d, %Y, %H:%M:%S") }},
       "author": {
         "@type": "Person",
-        "name": "Yeroda"
+        "name": {{ AUTHOR }}
       },
        "publisher": {
         "@type": "Organization",
-        "name": "Yeroda"
+        "name": {{ AUTHOR }}
         
       }
     }
@@ -71,11 +72,11 @@
                     {% if article.image %}
                     <div class="square">
                 
-                        <img src="{{ article.image }}">  
+                        <img src="{{ article.image }}" alt="{{ article.title }}">  
                         </div>
                     {% endif %}
 
-                <h2 class="card-title">{{article.title }}</h2>
+                <h2 class="card-title">{{ article.title }}</h2>
                                
               
               <ul class="card-actions">

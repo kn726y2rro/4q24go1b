@@ -6,6 +6,12 @@
 {% block head %}
   {{ super() }}
 
+  <link rel="canonical" href="{{ SITEURL }}/{{article.url}}">
+  <meta name="description" content="{{ SITEDESCRIPTION }}" />
+  <meta name="keywords" content="{{ article.tags | join(', ')}}">
+  <meta name="author" content="{{ AUTHOR }}">
+
+
   {% if article.metadescription %}
   <meta name="description" content="{{ article.metadescription }}" />
   {% endif %}
@@ -126,7 +132,7 @@
       <div class="card">
         <h3 class="card-title">Most Popular</h3>
         <div class="center square">
-        <img src="{{article.cool_products[0].image_m}}">
+        <img src="{{article.cool_products[0].image_m}}"  alt="{{ article.cool_products[0].title }}">
         </div>
         <br>
         <div class="card-contents">
@@ -135,7 +141,7 @@
         </div>
           <ul class="card-actions">
             <li>
-              <a href="{{ article.cool_products[0].clickurl }}" class="center">
+              <a href="{{ article.cool_products[0].clickurl }}" rel="nofollow" class="center">
               <button class="button-warning">
                 {% if article.cta %}
                       {{ article.cta }}
@@ -151,7 +157,7 @@
       <div class="card">
         <h3 class="card-title">2nd Choice</h3>
         <div class="center square">
-        <img src="{{article.cool_products[1].image_m}}">
+        <img src="{{article.cool_products[1].image_m}}" alt="{{ article.cool_products[1].title }}">
         </div>
         <br>
         <div class="card-contents">
@@ -160,7 +166,7 @@
         </div>
         <ul class="card-actions">
           <li>
-              <a href="{{ article.cool_products[1].clickurl }}" class="center">
+              <a href="{{ article.cool_products[1].clickurl }}" rel="nofollow" class="center">
             <button class="button-warning">
               {% if article.cta %}
                     {{ article.cta }}
@@ -175,7 +181,7 @@
       <div class="card">
         <h3 class="card-title">3rd Choice</h3>
         <div class="center square">
-        <img src="{{article.cool_products[2].image_m}}">
+        <img src="{{article.cool_products[2].image_m}}"  alt="{{ article.cool_products[2].title }}">
         </div>
         <br>
         <div class="card-contents">
@@ -184,7 +190,7 @@
       </div>
         <ul class="card-actions">
           <li>
-              <a href="{{ article.cool_products[2].clickurl }}" class="center">
+              <a href="{{ article.cool_products[2].clickurl }}" rel="nofollow" class="center">
             <button class="button-warning">
               {% if article.cta %}
                     {{ article.cta }}
@@ -242,8 +248,8 @@ We are a participant in the ClickBank and Amazon Services LLC Associates program
           <div class="col col-lg-3">
               {% if product.image_m %}
               <div class="center">
-              <a href="{{ product.clickurl }}">
-              <img src="{{ product.image_m }}">
+              <a href="{{ product.clickurl }}" rel="nofollow">
+              <img src="{{ product.image_m }}" alt="{{ product.title }}">
               </a>
               </div>
               {% endif %}
@@ -251,7 +257,7 @@ We are a participant in the ClickBank and Amazon Services LLC Associates program
 
           <div class="col col-lg-5">
                 <div class="center">
-              <a href="{{ product.clickurl }}">
+              <a href="{{ product.clickurl }}" rel="nofollow">
               {% if product.title %}
                 <p class="card-title align-center" style="">{{ product.title }}</p>
               {% endif %}
@@ -262,7 +268,7 @@ We are a participant in the ClickBank and Amazon Services LLC Associates program
 
           <div class="col col-lg-3">
             <div class="align-center vertical-center">
-              <a href="{{ product.clickurl }}">
+              <a href="{{ product.clickurl }}" rel="nofollow">
               <button class="button-warning button-shadow">
                 {% if article.cta %}
                     {{ article.cta }}
@@ -337,18 +343,18 @@ We are a participant in the ClickBank and Amazon Services LLC Associates program
         <p class="panel-title">{{ loop.index }}. Review</p>
     </div>
     <div class="panel-body">
-      <a href="{{ review.clickurl }}" class="center">
-        <img src="{{review.image_l}}">
+      <a href="{{ review.clickurl }}" class="center" rel="nofollow" >
+        <img src="{{review.image_l}}"  alt="{{ review.title }}">
       </a>
       <br>
-      <a href="{{ review.clickurl }}">
+      <a href="{{ review.clickurl }}" rel="nofollow">
       <h3 >{{review.title}}</h3>
     </a>
     <br>
         {{review.text}}
     </div>
     <div class="panel-footer">
-      <a href="{{ review.clickurl }}" class="center">
+      <a href="{{ review.clickurl }}" class="center" rel="nofollow">
       <button class="button-warning button-shadow">
         {% if article.cta %}
             {{ article.cta }}
