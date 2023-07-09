@@ -10,6 +10,8 @@ SITEURL = 'https://yeroda.com' #'http://127.0.0.1'
 
 SITETITLE = "Reviews of Best Selling Products in 2023"
 SITEDESCRIPTION = "Discover 2023's best-selling products with our concise, insightful reviews. Make informed purchases with our expert analysis and ratings. Your shortcut to the best of 2023 starts here!"
+SITEKEYWORDS = "Best Selling Products 2023"
+
 
 TIMEZONE = 'Europe/Paris'
 BUILD_TIME = datetime.now(pytz.timezone(TIMEZONE))

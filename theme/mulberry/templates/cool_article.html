@@ -7,7 +7,7 @@
   {{ super() }}
 
   {% if article.metadescription %}
-  <meta type="description" content="{{ article.metadescription }}" />
+  <meta name="description" content="{{ article.metadescription }}" />
   {% endif %}
 
   {% if article.cool_opengraph %}
