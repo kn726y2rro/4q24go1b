@@ -4,7 +4,7 @@
 <div class="center">
     <ul class="pagination">
         {% if articles_page.has_previous() %}
-            <li><a href="{{ SITEURL }}/{{ page_name }}{{ '' }}.html">
+            <li><a href="{{ SITEURL }}/{{ first_page.url }}">
                 <span aria-hidden="true">First</span></a>
             </li>
             <li><a href="{{ SITEURL }}/{{ articles_previous_page.url }}">Prev</a></li>
@@ -15,12 +15,9 @@
         {% endif %}
 
         {% for page in range(1, articles_paginator.num_pages + 1) %}
-            {% if page == 1 and page >= (articles_page.number - 2) and page <= (articles_page.number) + 2 %}
+            {% if page >= (articles_page.number - 2) and page <= (articles_page.number) + 2 %}
                 <li><a class="{{ 'active' if page == articles_page.number else '' }}"
-                        href='{{ SITEURL }}/{{ page_name }}{{ "" }}.html'>{{ page }}</a></li>
-            {% elif page >= (articles_page.number - 2) and page <= (articles_page.number) + 2 %}
-                <li><a class="{{ 'active' if page == articles_page.number else '' }}"
-                        href="{{ SITEURL }}/{{ page_name }}{{ page }}.html">{{ page }}</a></li>
+                        href='{{ SITEURL }}/{{ articles_paginator.page(page).url if page > 1 else articles_paginator.page(1).url }}'>{{ page }}</a></li>
             {% endif %}
         {% endfor %}
 
@@ -30,7 +27,7 @@
         
         {% if articles_page.has_next() %}
             <li><a href="{{ SITEURL }}/{{ articles_next_page.url }}">Next</a></li>
-            <li><a href="{{ SITEURL }}/{{ page_name }}{{ articles_paginator.num_pages }}.html">
+            <li><a href="{{ SITEURL }}/{{ last_page.url }}">
                 <span aria-hidden="true">Last</span></a>
             </li>
         {% endif %}
