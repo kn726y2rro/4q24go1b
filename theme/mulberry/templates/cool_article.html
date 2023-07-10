@@ -44,7 +44,8 @@
       "dateModified": "{{ article.modified }}",
       "author": {
         "@type": "Person",
-        "name": "{{ article.author }}"
+        "name": "{{ article.author }}",
+        "url": "{{ SITEURL }}/author/{{ article.author }}"
       },
        "publisher": {
         "@type": "Organization",
