@@ -22,7 +22,7 @@ PATH = 'content'
 THEME = 'theme/mulberry'
 
 
-DEFAULT_LANG = 'English'
+DEFAULT_LANG = 'en'
 
 GOOGLE_ANALYTICS = "G-S5LW93DGNV"
 
