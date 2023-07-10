@@ -10,7 +10,7 @@ SITENAME = 'YERODA'
 SITEURL = 'https://yeroda.com'
 
 SITETITLE = "Reviews of Best Selling Products in 2023"
-SITEDESCRIPTION = "Discover 2023's best-selling products with our concise, insightful reviews. Make informed purchases with our expert analysis and ratings. Your shortcut to the best of 2023 starts here!"
+SITEDESCRIPTION = "Discover 2023's best-selling products with our reviews. Make informed purchases with our recommendations. Your shortcut to the best of 2023 starts here!"
 SITEKEYWORDS = "Best Selling Products 2023"
 
 
