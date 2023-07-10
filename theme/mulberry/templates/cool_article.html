@@ -6,31 +6,21 @@
   {{ super() }}
 
   <link rel="canonical" href="{{ SITEURL }}/{{article.url}}">
-  <meta name="description" content="{{ SITEDESCRIPTION }}" />
+  <meta name="description" content="{{ article.metadescription }}" />
   <meta name="keywords" content="{{ article.tags | join(', ')}}">
-  <meta name="author" content="{{ AUTHOR }}">
+  <meta name="author" content="{{ article.author }}">
   <meta name="publisher" content="{{ AUTHOR }}">
 
 
-  {% if article.metadescription %}
   <meta name="description" content="{{ article.metadescription }}" />
-  {% endif %}
-
-  {% if article.cool_opengraph %}
-
-  {% if article.cool_opengraph.title %}
-  <meta property="og:title" content="{{ article.cool_opengraph.title }}" />
-  {% endif %}
-  {% if article.cool_opengraph.description %}
-  <meta property="og:description" content="{{ article.cool_opengraph.description }}" />
-  {% endif %}
-  <meta property="og:type" content="article" />
-  {% if article.cool_opengraph.image %}
-  <meta property="og:image" content="{{ article.cool_opengraph.image }}" />
+  <meta property="og:title" content="{{ article.title }}" />
+  <meta property="og:description" content="{{ article.metadescription }}" />
+  <meta property="og:image" content="{{ article.image }}" />
   <meta property="og:image:width" content="500" />
   <meta property="og:image:height" content="500" />
-  {% endif %}
-  {% endif %}
+  <meta property="og:type" content="article" />
+  <meta property='article:author' content= "{{ SITEURL }}/author/{{ article.author }}" />
+  <meta property='article:publisher' content="{{ SITEURL }}/author/{{ article.author }}" />
   <meta property="og:url" content="{{ SITEURL }}/{{ article.url }}" />
   <meta property="og:site_name" content="{{ SITENAME }}" />
 
@@ -44,7 +34,7 @@
   {% endif %}
   {% endif %}
 
-  {% if article.cool_richsnippet %}
+ 
       <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -53,25 +43,25 @@
         "@type": "WebPage",
         "@id": {{ SITEURL }}/{{ article.url }}
       },
-      "headline": {{ article.cool_richsnippet.headline }},
-      "image": {{ article.cool_richsnippet.image }},
+      "headline": {{ article.title }},
+      "image": {{ article.image }},
       "datePublished": {{ article.date }},
       "dateModified": {{ article.modified }},
       "author": {
         "@type": "Person",
-        "name": {{ article.cool_richsnippet.authorname }}
+        "name": {{ article.author }}
       },
        "publisher": {
         "@type": "Organization",
-        "name": {{ article.cool_richsnippet.publishername }},
+        "name": {{ AUTHOR }},
         "logo": {
           "@type": "ImageObject",
-          "url": {{ article.cool_richsnippet.logoimage }}
+          "url": {{ SITEURL }}
         }
       }
     }
     </script>
- {% endif %}
+
 
     
 {% endblock %}
