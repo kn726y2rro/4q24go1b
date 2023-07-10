@@ -5,6 +5,12 @@
 
 {% block head %}
   {{ super() }}
+   <link rel="canonical" href="{{ SITEURL }}/{{page.url}}">
+  <meta name="description" content="{{ page.description }}" />
+    <meta name="author" content="{{ AUTHOR }}">
+  <meta name="publisher" content="{{ AUTHOR }}">
+
+  <meta name="robots" content="noindex">
 {% endblock %}
 
 {% block content %}

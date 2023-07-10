@@ -1,6 +1,7 @@
 title: Terms and Conditions
 date: 2023-06-26 00:00
 modified: 2023-06-26 00:00
+description: Terms and conditions
 
 
 Please read these terms and conditions carefully before using Our Service.

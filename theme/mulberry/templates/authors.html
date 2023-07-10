@@ -2,6 +2,12 @@
 
 {% block title %}{{ SITENAME }} - Authors{% endblock %}
 
+{% block head %}
+  {{ super() }}
+   
+  <meta name="robots" content="noindex">
+{% endblock %}
+
 {% block content %}
 
 <section class="section-primary">

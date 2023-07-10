@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
 {% block title %}{{ SITENAME }} - Categories{% endblock %}
+{% block head %}
+  {{ super() }}
+   
+  <meta name="robots" content="noindex">
+{% endblock %}
 
 {% block content %}
 
