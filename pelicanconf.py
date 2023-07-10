@@ -12,7 +12,7 @@ SITEURL = 'https://yeroda.com'
 SITETITLE = "Reviews of Best Selling Products in 2023"
 SITEDESCRIPTION = "Discover 2023's best-selling products with our reviews. Make informed purchases with our recommendations. Your shortcut to the best of 2023 starts here!"
 SITEKEYWORDS = "Best Selling Products 2023"
-
+SITEIMAGE = "images/yeroda.png"
 
 TIMEZONE = 'Europe/Paris'
 BUILD_TIME = datetime.now(pytz.timezone(TIMEZONE))
@@ -54,7 +54,7 @@ TAG_URL = 'tag/{slug}/'
 TAG_SAVE_AS = 'tag/{slug}/index.html'
 
 
-STATIC_PATHS = ['extra/robots.txt']
+STATIC_PATHS = ['extra/robots.txt','images/']
 
 EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'}

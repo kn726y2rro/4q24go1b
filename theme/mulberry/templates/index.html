@@ -16,35 +16,15 @@
   <meta property="og:description" content="{{ SITEDESCRIPTION }}" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="">
+  <meta property="og:image" content="{{ SITEURL }}/{{ SITEIMAGE }}">
 
   <meta property="og:url" content="{{ SITEURL }}" />
   <meta property="og:site_name" content="{{ SITENAME }}" />
 
-
- 
-      <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://yeroda.com"
-      },
-      "headline": {{ SITETITLE }},
-      "datePublished": "2023-06-26 00:00",
-      "dateModified": {{ BUILD_TIME | strftime("%b %d, %Y, %H:%M:%S") }},
-      "author": {
-        "@type": "Person",
-        "name": {{ AUTHOR }}
-      },
-       "publisher": {
-        "@type": "Organization",
-        "name": {{ AUTHOR }}
-        
-      }
-    }
-    </script>
+ <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ SITETITLE }}" />
+  <meta name="twitter:description" content="{{ SITEDESCRIPTION }}" />
+  <meta name="twitter:image" content="{{ SITEURL }}/{{ SITEIMAGE }}" />
 
 
     

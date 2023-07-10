@@ -24,15 +24,10 @@
   <meta property="og:url" content="{{ SITEURL }}/{{ article.url }}" />
   <meta property="og:site_name" content="{{ SITENAME }}" />
 
-  {% if article.cool_twitter %}
-  <meta property="twitter:card" content="summary_large_image" />
-  {% if article.cool_twitter.image %}
-  <meta property="twitter:image" content="{{ article.cool_twitter.image }}" />
-  {% endif %}
-  {% if article.cool_twitter.image %}
-  <meta property="twitter:site" content="{{ article.cool_twitter.handle }}" />
-  {% endif %}
-  {% endif %}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ article.title }}" />
+  <meta name="twitter:description" content="{{ article.metadescription }}" />
+  <meta name="twitter:image" content="{{ article.image }}" />
 
  
       <script type="application/ld+json">
@@ -41,24 +36,26 @@
       "@type": "Article",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": {{ SITEURL }}/{{ article.url }}
+        "@id": "{{ SITEURL }}/{{ article.url }}"
       },
-      "headline": {{ article.title }},
-      "image": {{ article.image }},
-      "datePublished": {{ article.date }},
-      "dateModified": {{ article.modified }},
+      "headline": "{{ article.title }}",
+      "image": "{{ article.image }}",
+      "datePublished": "{{ article.date }}",
+      "dateModified": "{{ article.modified }}",
       "author": {
         "@type": "Person",
-        "name": {{ article.author }}
+        "name": "{{ article.author }}"
       },
        "publisher": {
         "@type": "Organization",
-        "name": {{ AUTHOR }},
+        "name": "{{ AUTHOR }}",
         "logo": {
           "@type": "ImageObject",
-          "url": {{ SITEURL }}
+          "url": "{{ SITEURL }}/{{SITEIMAGE}}"
         }
-      }
+      },
+      "datePublished": "{{ article.date }}",
+      "dateModified": "{{ article.modified }}"
     }
     </script>
 
