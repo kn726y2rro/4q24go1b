@@ -6,8 +6,8 @@ import pytz
 
 AUTHOR = 'Yeroda'
 SITENAME = 'YERODA'
-# SITEURL = ''
-SITEURL = 'https://yeroda.com'
+SITEURL = ''
+# SITEURL = 'https://yeroda.com'
 
 SITETITLE = "Reviews of Best Selling Products in 2023"
 SITEDESCRIPTION = "Discover 2023's best-selling products with our reviews. Make informed purchases with our recommendations. Your shortcut to the best of 2023 starts here!"
@@ -62,11 +62,11 @@ PAGINATION_PATTERNS = (
     (2, '{base_name}/page/{number}/', '{base_name}/page/{number}/index.html'),
 )
 
-STATIC_PATHS = ['extra/robots.txt','images/']
+STATIC_PATHS = ['extra/robots.txt','images/', 'images/favicon.ico']
 
 EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'},
-    'images/favicon.ico': {'path': 'favicon.ico'},
+    'images/favicon.ico': {'path': 'favicon.ico'}
 }
 
 
