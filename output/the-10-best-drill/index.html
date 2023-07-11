@@ -23,8 +23,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
         <link rel="stylesheet" href="https://unpkg.com/mustard-ui@latest/dist/css/mustard-ui.min.css">
         <link rel="stylesheet" href="/theme/css/style.css">
-        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-        <!-- <script src="/theme/js/mobile-menu.js"></script> -->
 
 
 
@@ -98,7 +96,7 @@
             <li><a href="/categories/">Categories</a></li>
         </ul>
 
-        <a class="mobile-menu-toggle"></a>
+        <a class="mobile-menu-toggle" href="#"></a>
         <ul class="mobile-menu menu">
             <li><a href="/">Home</a></li>
             <li><a href="/disclaimer/">Disclaimer</a></li>
@@ -1224,16 +1222,16 @@ We are a participant in the ClickBank and Amazon Services LLC Associates program
 </footer>
 </body>
 <script type="text/javascript">
-   // toggle mobile menu
-    $('.mobile-menu-toggle').on('click', function(e) {
-        e.preventDefault()
-        e.stopPropagation()
-        $('.mobile-menu').show()
-    })
+    document.querySelector('.mobile-menu-toggle').addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        document.querySelector('.mobile-menu').style.display = 'block';
+    });
 
-    $('body').on('click', function() {
-        $('.mobile-menu').hide()
-    })
+    document.querySelector('body').addEventListener('click', function() {
+        document.querySelector('.mobile-menu').style.display = 'none';
+    });
+
 
 </script>
 </html>
