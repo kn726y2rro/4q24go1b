@@ -6,8 +6,8 @@ import pytz
 
 AUTHOR = 'Yeroda'
 SITENAME = 'YERODA'
-SITEURL = ''
-# SITEURL = 'https://yeroda.com'
+# SITEURL = ''
+SITEURL = 'https://yeroda.com'
 
 SITETITLE = "Reviews of Best Selling Products in 2023"
 SITEDESCRIPTION = "Discover 2023's best-selling products with our reviews. Make informed purchases with our recommendations. Your shortcut to the best of 2023 starts here!"
@@ -36,8 +36,7 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 
-# DEFAULT_ORPHANS = 0
-DEFAULT_PAGINATION = 8 #6
+DEFAULT_PAGINATION = 8
 
 ARTICLE_URL = '{slug}/'
 ARTICLE_SAVE_AS = '{slug}/index.html'
@@ -56,9 +55,10 @@ TAG_SAVE_AS = 'tag/{slug}/index.html'
 AUTHORS_SAVE_AS = 'authors/index.html'
 CATEGORIES_SAVE_AS = 'categories/index.html'
 TAGS_SAVE_AS = 'tags/index.html'
+INDEX_SAVE_AS = 'index.html'
 
 PAGINATION_PATTERNS = (
-    (1, '{url}', '{save_as}'),
+    (1, '{base_name}/', '{save_as}'),
     (2, '{base_name}/page/{number}/', '{base_name}/page/{number}/index.html'),
 )
 
@@ -80,8 +80,7 @@ SITEMAP = {
 }
 
 PLUGIN_PATHS = ["plugins"]
-# PLUGINS = ['sitemap','rad', 'yaml_metadata','more_categories', 'similar_posts']#, 'seo']
-PLUGINS = ['sitemap','rad','more_categories', 'similar_posts']#, 'seo']
+PLUGINS = ['sitemap','rad','more_categories', 'similar_posts']
 
 SIMILAR_POSTS_MAX_COUNT = 4
 
