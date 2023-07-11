@@ -99,9 +99,11 @@
 
         <ul class="tags center">
         {% for tag in article.tags|sort %}
-          <a href="{{ SITEURL }}/{{ tag.url }}">
-            <li class="tag" style="margin-bottom: 15px;">{{ tag }}</li>
-          </a>
+          
+            <li class="tag" style="margin-bottom: 15px;">
+              <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+            </li>
+          
         {% endfor %}
         </ul>
     </div>
