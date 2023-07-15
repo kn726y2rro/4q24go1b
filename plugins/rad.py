@@ -36,7 +36,8 @@ class NewReader(BaseReader):
         parsed = {}
         for key, value in metadata.items():
             if key == "cool_description":
-                contents = value[1:]#.replace("\n#","\n##")
+                contents = value[2:]#.replace("\n#","\n##")
+                contents = "\n" + contents
 
                 if "\n# " in contents:
                     contents = contents.replace("\n#","\n##")
@@ -64,19 +65,23 @@ class NewReader(BaseReader):
 
                     rev_str = []
                     for s in unproc_v[1:]:
-
-                        if "." in s:
-                            s_split = s.split(".")
+                        
+                        if ". " in s:
+                            s_split = s.split(". ")
                             # print("----", s_split)
                             # s_split = [sp if len(sp)>3 else "" for sp in s_split]
                             s_split = [x for x in s_split if x != '' and x != ' ']
-                            s_split = [x if x[-1]=="!" or x[-1]=="?" else x+"." for x in s_split]
+                            s_split = [x if x[-1]=="!" or x[-1]=="?" or x[-1]=="." or x[-1]==":" else x+"." for x in s_split]
                             
                             s = ''.join([sp if len(sp) < 100 else sp+"\n\n" for sp in s_split])
                         if "#" in s:
-                            pass
-                        else:
-                            rev_str.append(s + "\n\n")
+                            s = re.sub(re.compile(r"[#]+\w+"), '', s)
+                            s_split = s.split("\n")
+                            s_split = ["" if ("# " in sp or "- " in sp) else sp for sp in s_split]
+                            s = ''.join([sp for sp in s_split])
+
+
+                        rev_str.append(s + "\n\n")
 
                     unproc_v[1:] = rev_str
 
@@ -87,7 +92,9 @@ class NewReader(BaseReader):
 
                     proc_v =  ''.join(unproc_v[1:]).split("<", 1)[0]
 
-                    rev_text = _md.convert(proc_v).replace("<pre><code>", "<br>").replace("</code></pre>", "<br>")
+                    rev_text = _md.convert(proc_v)
+                    rev_text = rev_text.replace("<pre><code>", "<br>").replace("</code></pre>", "<br>")
+                    rev_text = rev_text.replace("<strong>", "").replace("</strong>", "")
                     rev_text = re.sub(re.compile(r'<img.*?/>'), '', rev_text)
 
                     rev = {}
