@@ -115,7 +115,10 @@ class NewReader(BaseReader):
             # print(key)
 
         # parsed["cool_description"] = Markdown().convert(parsed["cool_description"])
-        parsed["metadescription"] = "Explore {} for 2023. Our detailed reviews provide the insights you need for an informed purchase.".format(parsed["title"].lower())
+
+        tt =  parsed["title_plural"] if "title_plural" in parsed else parsed["title"]
+
+        parsed["metadescription"] = "Explore {} for 2023. Our detailed reviews provide the insights you need for an informed purchase.".format(tt.lower())
 
         if "title_plural" in parsed:
             parsed["keywords"] = parsed["title_plural"].replace('The 10 Best ', '')
