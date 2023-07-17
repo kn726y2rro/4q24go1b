@@ -79,7 +79,8 @@ class NewReader(BaseReader):
                             s_split = s.split("\n")
                             s_split = ["" if ("# " in sp or "- " in sp) else sp for sp in s_split]
                             s = ''.join([sp for sp in s_split])
-
+                        if "![" in s:
+                            s = ""
 
                         rev_str.append(s + "\n\n")
 
