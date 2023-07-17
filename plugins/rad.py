@@ -95,6 +95,8 @@ class NewReader(BaseReader):
                     rev_text = _md.convert(proc_v)
                     rev_text = rev_text.replace("<pre><code>", "<br>").replace("</code></pre>", "<br>")
                     rev_text = rev_text.replace("<strong>", "").replace("</strong>", "")
+                    rev_text = rev_text.replace("<h1>", "").replace("</h1>", "")
+                    rev_text = rev_text.replace("<h2>", "").replace("</h2>", "")
                     rev_text = re.sub(re.compile(r'<img.*?/>'), '', rev_text)
 
                     rev = {}
