@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ SITENAME }} - {{ article.title|striptags }}{%endblock%}
+{% block title %}{{ article.title|striptags }} by {{ SITENAME }}{%endblock%}
 
 {% block head %}
   {{ super() }}
@@ -113,7 +113,7 @@
 
 <section class="section-secondary">
   <div class="container container-small">
-  <h2 class="">Top 3 Best-Selling Products You Need to Know About Now:</h2>
+  <h2 class="">Top 3 Best-Selling {{ article.keywords }} You Need to Know About Now:</h2>
   <div class="row">
     <div class="col col-md-4">
       <div class="card">
@@ -216,7 +216,7 @@ We are a participant in the ClickBank and Amazon Services LLC Associates program
     <section class="section-primary">
       <div class="container container-small">
 
-        <h2>Discover the 10 Best-Selling Products That Everyone is Talking About:</h2>
+        <h2>Discover the 10 Best-Selling {{ article.keywords }} That Everyone is Talking About:</h2>
 
         </div>
           <div class="container">
@@ -319,7 +319,7 @@ We are a participant in the ClickBank and Amazon Services LLC Associates program
   <div class="container container-small">
 
 
-      <h2>Explore the 10 Best-Selling Products: Why They're Worth It...</h2>
+      <h2>Explore the 10 Best-Selling {{ article.keywords }}: Why They're Worth It...</h2>
 
 
     {% for review in article.cool_reviews %}

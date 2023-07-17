@@ -117,6 +117,8 @@ class NewReader(BaseReader):
         # parsed["cool_description"] = Markdown().convert(parsed["cool_description"])
         parsed["metadescription"] = "Explore {} for 2023. Our detailed reviews provide the insights you need for an informed purchase.".format(parsed["title"].lower())
 
+        parsed["keywords"] = parsed["title"].replace('The 10 Best ', '')
+
         return content, parsed
 
 
