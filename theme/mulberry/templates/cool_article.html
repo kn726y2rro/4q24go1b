@@ -287,13 +287,13 @@ We are a participant in the ClickBank and Amazon Services LLC Associates program
 {% for similar in article.similar_posts %}
     <div class="col col-md-3">
       <div class="card">
-        <h3 class="card-title"></h3>
+        <p class="card-title"></p>
         <div class="square center">
         <img src="{{similar.image}}" alt="{{similar.title}}">
         </div>
         <br>
         <div class="card-contents">
-        <p><strong>{{ similar.title }}</strong></p>
+        <h3>{{ similar.title }}</h3>
         </div>
         <ul class="card-actions">
           <li>
