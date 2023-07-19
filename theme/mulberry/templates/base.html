@@ -2,6 +2,7 @@
 <html lang="{% block html_lang %}{{ DEFAULT_LANG }}{% endblock html_lang %}">
 <head>
 
+{% if GOOGLE_ANALYTICS %}
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ GOOGLE_ANALYTICS }}"></script>
 <script>
@@ -11,6 +12,7 @@
 
   gtag('config', '{{ GOOGLE_ANALYTICS }}');
 </script>
+{% endif %}
 <link rel="shortcut icon" href="{{ SITEURL }}/favicon.ico">
 
         {% block head %}

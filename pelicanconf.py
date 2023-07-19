@@ -6,8 +6,8 @@ import pytz
 
 AUTHOR = 'Yeroda'
 SITENAME = 'YERODA'
-# SITEURL = ''
-SITEURL = 'https://yeroda.com'
+SITEURL = ''
+# SITEURL = 'https://yeroda.com'
 
 SITETITLE = "Reviews of Best Selling Products in 2023"
 SITEDESCRIPTION = "Discover 2023's best-selling products with our reviews. Make informed purchases with our recommendations. Your shortcut to the best of 2023 starts here!"
@@ -24,7 +24,7 @@ THEME = 'theme/mulberry'
 
 DEFAULT_LANG = 'en'
 
-GOOGLE_ANALYTICS = "G-S5LW93DGNV"
+# GOOGLE_ANALYTICS = "G-S5LW93DGNV"
 
 LOAD_CONTENT_CACHE = False
 
