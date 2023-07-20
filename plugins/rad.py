@@ -36,6 +36,7 @@ class NewReader(BaseReader):
         parsed = {}
         for key, value in metadata.items():
             if key == "cool_description":
+
                 contents = value[2:]#.replace("\n#","\n##")
                 contents = "\n" + contents
 
@@ -50,26 +51,24 @@ class NewReader(BaseReader):
 
                 all_reviews = []
                 for ix, v in enumerate(value):
-
+   
                     unproc_v = v[2:]
                     unproc_v = unproc_v.split("\n")
-
+            
                     if len(unproc_v[0]) < 3:
                         unproc_v.pop(0)
 
-                    # unproc_v[0] = unproc_v[0].replace("#","")
+                    if len(unproc_v) < 2:
+                        unproc_v = list(["",""])
                     unproc_v[0] = metadata['cool_products'][ix]['title']
                     unproc_v[0] = "\n### " +str(ix+1) + ". " + unproc_v[0] + "\n"
-
-                    # unproc_v[1:] = ["" if "#" in s else  s + "\n\n" for s in unproc_v[1:]]
 
                     rev_str = []
                     for s in unproc_v[1:]:
                         
                         if ". " in s:
                             s_split = s.split(". ")
-                            # print("----", s_split)
-                            # s_split = [sp if len(sp)>3 else "" for sp in s_split]
+
                             s_split = [x for x in s_split if x != '' and x != ' ']
                             s_split = [x if x[-1]=="!" or x[-1]=="?" or x[-1]=="." or x[-1]==":" else x+"." for x in s_split]
                             
@@ -83,14 +82,10 @@ class NewReader(BaseReader):
                             s = ""
 
                         rev_str.append(s + "\n\n")
-
+        
                     unproc_v[1:] = rev_str
 
-                    # print("-----", unproc_v)
-
-
-                    
-
+       
                     proc_v =  ''.join(unproc_v[1:]).split("<", 1)[0]
 
                     rev_text = _md.convert(proc_v)
@@ -110,7 +105,7 @@ class NewReader(BaseReader):
                     rev["clickurl"] = metadata['cool_products'][ix]['clickurl']
 
                     all_reviews.append(rev)
-
+          
 
                 parsed[key] = all_reviews
             else:
