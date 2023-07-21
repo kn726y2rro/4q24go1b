@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 
-{% block title %}{{ article.title|striptags }} reviewed by {{ SITENAME }}{%endblock%}
+{% if article.title_plural %}
+{% set ARTICLE_TITLE = article.title_plural %}
+{% elif article.title %}
+{% set ARTICLE_TITLE = article.title %}
+{% else %}
+{% set ARTICLE_TITLE = "" %}
+{% endif %}
+
+{% block title %}{{ ARTICLE_TITLE|striptags }} reviewed by {{ SITENAME }}{%endblock%}
 
 {% block head %}
   {{ super() }}
@@ -12,7 +20,7 @@
   <meta name="publisher" content="{{ AUTHOR }}">
 
 
-  <meta property="og:title" content="{{ article.title }}" />
+  <meta property="og:title" content="{{ ARTICLE_TITLE }}" />
   <meta property="og:description" content="{{ article.metadescription }}" />
   <meta property="og:image" content="{{ article.image }}" />
   <meta property="og:image:width" content="500" />
@@ -24,7 +32,7 @@
   <meta property="og:site_name" content="{{ SITENAME }}" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="{{ article.title }}" />
+  <meta name="twitter:title" content="{{ ARTICLE_TITLE }}" />
   <meta name="twitter:description" content="{{ article.metadescription }}" />
   <meta name="twitter:image" content="{{ article.image }}" />
 
@@ -37,7 +45,7 @@
         "@type": "WebPage",
         "@id": "{{ SITEURL }}/{{ article.url }}"
       },
-      "headline": "{{ article.title }}",
+      "headline": "{{ ARTICLE_TITLE }}",
       "image": "{{ article.image }}",
       "datePublished": "{{ article.date }}",
       "dateModified": "{{ article.modified }}",
@@ -87,9 +95,8 @@
         {% endif %}
 
 
-        {% if article.title %}
-        <h1 class="h1 align-center">{{ article.title }}</h1>
-        {% endif %}
+        <h1 class="h1 align-center">{{ ARTICLE_TITLE }}</h1>
+
 
         {% if article.subtitle %}
         <div class="align-center"><em>{{ article.subtitle }}</em></div><br>
@@ -285,15 +292,25 @@ We are a participant in the ClickBank and Amazon Services LLC Associates program
   <div class="row">
 
 {% for similar in article.similar_posts %}
+
+
+{% if similar.title_plural %}
+{% set SIMILAR_TITLE = similar.title_plural %}
+{% elif similar.title %}
+{% set SIMILAR_TITLE = similar.title %}
+{% else %}
+{% set SIMILAR_TITLE = "" %}
+{% endif %}
+
     <div class="col col-md-3">
       <div class="card">
         <p class="card-title"></p>
         <div class="square center">
-        <img src="{{similar.image}}" alt="{{similar.title}}">
+        <img src="{{similar.image}}" alt="{{SIMILAR_TITLE}}">
         </div>
         <br>
         <div class="card-contents">
-        <h3>{{ similar.title }}</h3>
+        <h3>{{ SIMILAR_TITLE }}</h3>
         </div>
         <ul class="card-actions">
           <li>

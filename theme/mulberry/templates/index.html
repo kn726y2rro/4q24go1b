@@ -46,6 +46,17 @@
         <div class="row">
 
         {% for article in articles_page.object_list %}
+
+
+        {% if article.title_plural %}
+        {% set ARTICLE_TITLE = article.title_plural %}
+        {% elif article.title %}
+        {% set ARTICLE_TITLE = article.title %}
+        {% else %}
+        {% set ARTICLE_TITLE = "" %}
+        {% endif %}
+
+
         <div class="col col-md-3">
         <div class="card">
             <a href="{{ SITEURL }}/{{ article.url }}">
@@ -53,11 +64,11 @@
                     {% if article.image %}
                     <div class="square">
                 
-                        <img src="{{ article.image }}" alt="{{ article.title }}">  
+                        <img src="{{ article.image }}" alt="{{ ARTICLE_TITLE }}">  
                         </div>
                     {% endif %}
 
-                <h2 class="card-title">{{ article.title }}</h2>
+                <h2 class="card-title">{{ ARTICLE_TITLE }}</h2>
                                
               
               <ul class="card-actions">
