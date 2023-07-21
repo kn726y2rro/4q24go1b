@@ -59,23 +59,28 @@
 
         <div class="col col-md-3">
         <div class="card">
-            <a href="{{ SITEURL }}/{{ article.url }}">
+            
                 
                     {% if article.image %}
-                    <div class="square">
+                    <div class="center square">
                 
                         <img src="{{ article.image }}" alt="{{ ARTICLE_TITLE }}">  
                         </div>
                     {% endif %}
 
-                <h2 class="card-title">{{ ARTICLE_TITLE }}</h2>
-                               
+                <div class="card-contents">
+                <h2 class="card-title align-center" style="line-height: 1.5em; padding-top: 0.8em;">{{ ARTICLE_TITLE }}</h2>
+                </div>          
               
               <ul class="card-actions">
-                  <li><button class="button-primary">Read more...</button></li>
+                  <li>
+                    <a href="{{ SITEURL }}/{{ article.url }}" class="center">
+                    <button class="button-primary">Read more...</button>
+                    </a>
+                </li>
                 </ul>
               
-            </a>
+            
         </div>
     </div>
         {% endfor %}

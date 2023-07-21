@@ -14,3 +14,7 @@ SITEURL = 'https://yeroda.com'
 
 # Following items are often useful when publishing
 GOOGLE_ANALYTICS = "G-S5LW93DGNV"
+
+
+FEED_ALL_ATOM = 'feeds/all.atom.xml'
+CATEGORY_FEED_ATOM = 'feeds/{slug}.atom.xml'
